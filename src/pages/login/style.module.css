@@ -1,0 +1,29 @@
+.main_sec {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.left {
+  background-color: black;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  width: 60%;
+}
+
+@media only screen and (max-width: 500px) {
+  .main_sec {
+    display: block;
+  }
+
+  .right {
+    margin: 4rem 0;
+  }
+}

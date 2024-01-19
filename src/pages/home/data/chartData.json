@@ -1,0 +1,25 @@
+{
+  "labels": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec"
+  ],
+  "datasets": [
+    {
+      "tension": 0.5,
+      "borderColor": "black",
+      "label": "User Growth",
+      "backgroundColor": "black",
+      "data": [10, 15, 20, 25, 25, 20, 20, 15, 20, 15, 20, 25]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "scales": {
+    "x": {
+      "title": {
+        "display": true,
+        "text": "Months",
+        "color": "black",
+        "font": {
+          "size": 20,
+          "weight": "bold"
+        }
+      }
+    },
+    "y": {
+      "title": {
+        "display": true,
+        "text": "User Growth",
+        "color": "black",
+        "font": {
+          "size": 20,
+          "weight": "bold"
+        }
+      }
+    }
+  }
+}
