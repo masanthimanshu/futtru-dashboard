@@ -52,13 +52,8 @@ export const Sidebar = ({ children }) => {
           />
           <SidebarItems
             icon={<VideoCall color="primary" />}
-            text="Movies"
-            link="/users"
-          />
-          <SidebarItems
-            icon={<VideoCall color="primary" />}
-            text="Web Series"
-            link="/users"
+            text="Content"
+            link="/content"
           />
         </List>
       </Drawer>

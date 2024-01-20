@@ -1,11 +1,7 @@
-import { Link } from "react-router-dom";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { UsersData } from "../../components/users/UsersData";
 import {
-  Box,
   Table,
-  Button,
-  Divider,
   TableRow,
   TableHead,
   TableBody,
@@ -15,8 +11,6 @@ import {
 export const Users = () => {
   return (
     <Sidebar>
-      <br />
-      <Divider />
       <Table>
         <TableHead>
           <TableRow>
