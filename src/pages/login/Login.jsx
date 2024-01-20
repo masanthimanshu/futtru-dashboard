@@ -48,21 +48,21 @@ export const Login = () => {
           )}
           <form onSubmit={handleSubmit}>
             <TextField
+              type="email"
+              value={user}
+              sx={{ mb: 2 }}
               label="Username"
               placeholder="Enter Your Username"
-              type="email"
-              sx={{ mb: 2 }}
-              fullWidth
-              value={user}
               onChange={(e) => setUser(e.target.value)}
+              fullWidth
             />
             <FormControl sx={{ mb: 4 }} fullWidth>
               <InputLabel>Password</InputLabel>
               <OutlinedInput
+                value={pass}
                 label="Password"
                 placeholder="Enter Your Password"
                 type={showPass ? "text" : "password"}
-                value={pass}
                 onChange={(e) => setPass(e.target.value)}
                 endAdornment={
                   <InputAdornment position="end">
