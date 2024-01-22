@@ -32,13 +32,6 @@ export const getDocumentData = async (collectionName, documentName) => {
   }
 };
 
-// Get Number of Documents in Collection
-export const numOfDocuments = async (collectionName) => {
-  const data = await getCollectionData(collectionName);
-
-  return data.length;
-};
-
 // Get Data using a Query
 export const getMatchingData = async (collectionName, key, operator, value) => {
   const arr = [];
