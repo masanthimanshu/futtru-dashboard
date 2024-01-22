@@ -1,12 +1,12 @@
 import { Line } from "react-chartjs-2";
 import chartData from "./data/chartData.json";
+import { Grid, Container } from "@mui/material";
 import chartOptions from "./data/chartOptions.json";
-import { Sidebar } from "../../components/sidebar/Sidebar";
-import { Grid, Box, Container, Typography } from "@mui/material";
+import { TopCard } from "../../components/home/TopCard";
 
-export const Home = () => {
+export default function Home() {
   return (
-    <Sidebar>
+    <>
       <Grid container spacing={3} textAlign="center">
         <Grid item md={4}>
           <TopCard heading="Data 1" text="35" />
@@ -24,25 +24,6 @@ export const Home = () => {
       <Container maxWidth="md">
         <Line data={chartData} options={chartOptions} />
       </Container>
-    </Sidebar>
+    </>
   );
-};
-
-const TopCard = ({ heading, text }) => {
-  return (
-    <Box
-      sx={{
-        p: 4,
-        color: "white",
-        borderRadius: 2,
-        bgcolor: "black",
-      }}
-    >
-      <Typography variant="h4">
-        <b>{heading}</b>
-      </Typography>
-      <br />
-      <Typography variant="h4">{text}</Typography>
-    </Box>
-  );
-};
+}

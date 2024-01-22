@@ -1,6 +1,6 @@
 import { Typography, Container, Box, Button } from "@mui/material";
 
-export const NotFound = () => {
+export default function NotFound() {
   return (
     <Container
       sx={{
@@ -26,4 +26,4 @@ export const NotFound = () => {
       </Box>
     </Container>
   );
-};
+}

@@ -13,7 +13,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 
-export const Login = () => {
+export default function Login() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState("");
@@ -81,4 +81,4 @@ export const Login = () => {
       </div>
     </section>
   );
-};
+}

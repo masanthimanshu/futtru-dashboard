@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Sidebar } from "../../components/sidebar/Sidebar";
 import { Box, Button, Popover, Divider } from "@mui/material";
 
-export const Content = () => {
+export default function Content() {
   const [anchor, setAnchor] = useState(null);
 
   const open = Boolean(anchor);
   const id = open ? "popover" : undefined;
 
   return (
-    <Sidebar>
+    <>
       <Box display="flex" justifyContent="flex-end">
         <Button
           color="primary"
@@ -52,6 +51,6 @@ export const Content = () => {
           </Link>
         </Box>
       </Popover>
-    </Sidebar>
+    </>
   );
-};
+}

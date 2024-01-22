@@ -1,19 +1,19 @@
 import "./style.css";
 import "chart.js/auto";
 
-import { useEffect } from "react";
 import { CssBaseline } from "@mui/material";
 import { CheckAuth } from "./auth/checkAuth";
 import { LoginKeeper } from "./auth/loginKeeper";
 import { Routes, Route } from "react-router-dom";
+import { useEffect, lazy, Suspense } from "react";
 
-import { Home } from "./pages/home/Home";
-import { Users } from "./pages/users/Users";
-import { Login } from "./pages/login/Login";
-import { NotFound } from "./pages/404/NotFound";
-import { Content } from "./pages/content/Content";
-import { AddMovie } from "./pages/addContent/AddMovie";
-import { AddWebSeries } from "./pages/addContent/AddWebSeries";
+const Home = lazy(() => import("./pages/home/Home"));
+const Login = lazy(() => import("./pages/login/Login"));
+const Users = lazy(() => import("./pages/users/Users"));
+const NotFound = lazy(() => import("./pages/404/NotFound"));
+const Content = lazy(() => import("./pages/content/Content"));
+const AddMovie = lazy(() => import("./pages/addContent/AddMovie"));
+const AddWebSeries = lazy(() => import("./pages/addContent/AddWebSeries"));
 
 export const Router = () => {
   useEffect(() => {
@@ -21,7 +21,7 @@ export const Router = () => {
   }, []);
 
   return (
-    <>
+    <Suspense>
       <CssBaseline />
       <Routes>
         <Route element={<LoginKeeper />}>
@@ -38,6 +38,6 @@ export const Router = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };

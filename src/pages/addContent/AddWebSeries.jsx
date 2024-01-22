@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Sidebar } from "../../components/sidebar/Sidebar";
 import { TextField, Grid, Typography, Button } from "@mui/material";
 
-export const AddWebSeries = () => {
+export default function AddWebSeries() {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {
@@ -10,7 +9,7 @@ export const AddWebSeries = () => {
   };
 
   return (
-    <Sidebar>
+    <>
       <Typography textAlign="center">
         <b>Add Web Series</b>
       </Typography>
@@ -40,6 +39,6 @@ export const AddWebSeries = () => {
           <Grid md={3}></Grid>
         </Grid>
       </form>
-    </Sidebar>
+    </>
   );
-};
+}
