@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { TextField, Grid, Typography, Button } from "@mui/material";
 import { Sidebar } from "../../components/sidebar/Sidebar";
+import { TextField, Grid, Typography, Button } from "@mui/material";
 
 export const AddWebSeries = () => {
   const [title, setTitle] = useState("");

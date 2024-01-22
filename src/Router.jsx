@@ -1,6 +1,7 @@
 import "./style.css";
 import "chart.js/auto";
 
+import { useEffect } from "react";
 import { CssBaseline } from "@mui/material";
 import { CheckAuth } from "./auth/checkAuth";
 import { LoginKeeper } from "./auth/loginKeeper";
@@ -15,6 +16,10 @@ import { AddMovie } from "./pages/addContent/AddMovie";
 import { AddWebSeries } from "./pages/addContent/AddWebSeries";
 
 export const Router = () => {
+  useEffect(() => {
+    window.onbeforeunload = () => "";
+  }, []);
+
   return (
     <>
       <CssBaseline />
