@@ -43,12 +43,12 @@ export const Users = () => {
           {users.map((e, index) => {
             return (
               <UsersData
-                time=""
                 key={e.id}
                 name={e.name}
                 email={e.email}
                 phone={e.phone}
                 index={index + 1}
+                time={e.timestamp.toDate().toDateString()}
               />
             );
           })}
