@@ -44,7 +44,7 @@ export const Users = () => {
             return (
               <UsersData
                 time=""
-                key={index}
+                key={e.id}
                 name={e.name}
                 email={e.email}
                 phone={e.phone}
