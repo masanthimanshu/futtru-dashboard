@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { UsersData } from "../../components/users/UsersData";
+import { getCollectionData } from "../../firebase/cloudFirestore/getData";
 import {
   Table,
   TableRow,
@@ -9,6 +11,12 @@ import {
 } from "@mui/material";
 
 export const Users = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getCollectionData("users").then((e) => setUsers(e));
+  }, []);
+
   return (
     <Sidebar>
       <Table>
@@ -32,20 +40,18 @@ export const Users = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <UsersData
-            index={1}
-            name="John Doe"
-            email="email@example.com"
-            phone="+91 - 9876543210"
-            time=""
-          />
-          <UsersData
-            index={2}
-            name="John Doe"
-            email="email@example.com"
-            phone="+91 - 9876543210"
-            time=""
-          />
+          {users.map((e, index) => {
+            return (
+              <UsersData
+                time=""
+                key={index}
+                name={e.name}
+                email={e.email}
+                phone={e.phone}
+                index={index + 1}
+              />
+            );
+          })}
         </TableBody>
       </Table>
     </Sidebar>

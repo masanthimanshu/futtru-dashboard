@@ -2,7 +2,7 @@ import { TableRow, TableCell } from "@mui/material";
 
 export const UsersData = ({ index, name, email, phone, time }) => {
   return (
-    <TableRow key={index}>
+    <TableRow>
       <TableCell>{index}</TableCell>
       <TableCell>{name}</TableCell>
       <TableCell>{email}</TableCell>

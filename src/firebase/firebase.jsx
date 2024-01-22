@@ -4,13 +4,13 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDvrSKCdEurL3KlHHr0HhdCzu7qqSI8bFY",
-  authDomain: "read-it-f5a4e.firebaseapp.com",
-  projectId: "read-it-f5a4e",
-  storageBucket: "read-it-f5a4e.appspot.com",
-  messagingSenderId: "485921219808",
-  appId: "1:485921219808:web:1ad054c7dd3ca9544f1c85",
-  measurementId: "G-NVLL4L0GJH",
+  apiKey: "AIzaSyCDSSCNlzDzTwDH3-MvrGoeNzZIATzM058",
+  authDomain: "ott-platform-18448.firebaseapp.com",
+  projectId: "ott-platform-18448",
+  storageBucket: "ott-platform-18448.appspot.com",
+  messagingSenderId: "542928930814",
+  appId: "1:542928930814:web:8798f44b3e32bc0f74e2af",
+  measurementId: "G-DP7E0SVWGR",
 };
 
 const app = initializeApp(firebaseConfig);
