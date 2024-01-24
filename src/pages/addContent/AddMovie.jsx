@@ -24,7 +24,7 @@ export default function AddMovie() {
   return (
     <>
       <Typography textAlign="center">
-        <b>Add Web Series</b>
+        <b>Add Movie</b>
       </Typography>
       <br />
       <Divider />
