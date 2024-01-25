@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { uploadImage } from "../../firebase/cloudStorage/UploadImage";
 import {
+  Box,
   Grid,
   Button,
   Select,
@@ -12,10 +14,21 @@ import {
 } from "@mui/material";
 
 export default function AddMovie() {
+  const uploadBtn = useRef(null);
+
   const [url, setUrl] = useState("");
   const [type, setType] = useState("");
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
+  const [trailer, setTrailer] = useState("");
+  const [previewImg, setPreviewImg] = useState("/upload-image.png");
+
+  const imgUpload = (e) => {
+    const imgFile = e.target.files[0];
+
+    setPreviewImg(URL.createObjectURL(imgFile));
+    uploadImage(imgFile).then((res) => setPreviewImg(res));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +46,21 @@ export default function AddMovie() {
       <form onSubmit={handleSubmit}>
         <Grid container spacing={5}>
           <Grid item md={6}>
-            <img src="/upload-image.png" alt="Upload" />
+            <Typography textAlign="center">Upload Movie Thumbnail</Typography>
+            <br />
+            <Box
+              sx={{ cursor: "pointer" }}
+              onClick={() => uploadBtn.current.click()}
+            >
+              <img src={previewImg} alt="Upload" />
+            </Box>
+            <input
+              type="file"
+              ref={uploadBtn}
+              accept="image/*"
+              onChange={imgUpload}
+              hidden
+            />
           </Grid>
           <Grid item md={6}>
             <TextField
@@ -41,16 +68,6 @@ export default function AddMovie() {
               label="Title"
               placeholder="Enter Movie Name"
               onChange={(e) => setTitle(e.target.value)}
-              fullWidth
-              required
-            />
-            <br />
-            <br />
-            <TextField
-              value={url}
-              label="URL"
-              placeholder="Paste HLS url here"
-              onChange={(e) => setUrl(e.target.value)}
               fullWidth
               required
             />
@@ -67,6 +84,29 @@ export default function AddMovie() {
               required
             />
             <br />
+            <br />
+            <Divider />
+            <br />
+            <Typography>Enter movie details below :</Typography>
+            <br />
+            <TextField
+              value={url}
+              label="HLS URL"
+              placeholder="Paste HLS url here"
+              onChange={(e) => setUrl(e.target.value)}
+              fullWidth
+              required
+            />
+            <br />
+            <br />
+            <TextField
+              value={trailer}
+              label="Trailer Youtube URL"
+              placeholder="Paste Trailer url here"
+              onChange={(e) => setTrailer(e.target.value)}
+              fullWidth
+              required
+            />
             <br />
             <br />
             <Divider />
