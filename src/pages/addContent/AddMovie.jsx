@@ -129,13 +129,13 @@ export default function AddMovie() {
         <br />
         <br />
         <Grid container>
-          <Grid md={3}></Grid>
-          <Grid md={6}>
+          <Grid item md={3}></Grid>
+          <Grid item md={6}>
             <Button variant="contained" color="primary" type="submit" fullWidth>
               SUBMIT
             </Button>
           </Grid>
-          <Grid md={3}></Grid>
+          <Grid item md={3}></Grid>
         </Grid>
       </form>
     </>
