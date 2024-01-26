@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { addDocument } from "../../firebase/cloudFirestore/setData";
 import { uploadImage } from "../../firebase/cloudStorage/UploadImage";
 import {
   Box,
@@ -14,24 +16,37 @@ import {
 } from "@mui/material";
 
 export default function AddMovie() {
+  const navigate = useNavigate();
   const uploadBtn = useRef(null);
 
   const [url, setUrl] = useState("");
-  const [type, setType] = useState("");
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
   const [trailer, setTrailer] = useState("");
-  const [previewImg, setPreviewImg] = useState("/upload-image.png");
+  const [paymentType, setPaymentType] = useState("");
+  const [thumbnail, setThumbnail] = useState("/upload-image.png");
 
   const imgUpload = (e) => {
     const imgFile = e.target.files[0];
 
-    setPreviewImg(URL.createObjectURL(imgFile));
-    uploadImage(imgFile).then((res) => setPreviewImg(res));
+    setThumbnail(URL.createObjectURL(imgFile));
+    uploadImage(imgFile).then((res) => setThumbnail(res));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const data = {
+      url,
+      desc,
+      title,
+      trailer,
+      thumbnail,
+      paymentType,
+      contentType: "movie",
+    };
+
+    addDocument("content", data).then(() => navigate(-1));
   };
 
   return (
@@ -52,7 +67,7 @@ export default function AddMovie() {
               sx={{ cursor: "pointer" }}
               onClick={() => uploadBtn.current.click()}
             >
-              <img src={previewImg} alt="Upload" />
+              <img src={thumbnail} alt="Upload" />
             </Box>
             <input
               type="file"
@@ -116,9 +131,9 @@ export default function AddMovie() {
             <FormControl fullWidth required>
               <InputLabel>Type</InputLabel>
               <Select
-                value={type}
+                value={paymentType}
                 label="Type"
-                onChange={(e) => setType(e.target.value)}
+                onChange={(e) => setPaymentType(e.target.value)}
               >
                 <MenuItem value="Free">Free</MenuItem>
                 <MenuItem value="Paid">Paid</MenuItem>
