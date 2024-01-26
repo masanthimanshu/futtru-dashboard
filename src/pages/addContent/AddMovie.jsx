@@ -19,10 +19,10 @@ export default function AddMovie() {
   const navigate = useNavigate();
   const uploadBtn = useRef(null);
 
-  const [url, setUrl] = useState("");
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
-  const [trailer, setTrailer] = useState("");
+  const [videoId, setVideoId] = useState("");
+  const [embedCode, setEmbedCode] = useState("");
   const [paymentType, setPaymentType] = useState("");
   const [thumbnail, setThumbnail] = useState("/upload-image.png");
 
@@ -37,13 +37,13 @@ export default function AddMovie() {
     e.preventDefault();
 
     const data = {
-      url,
       desc,
       title,
-      trailer,
+      videoId,
+      embedCode,
       thumbnail,
       paymentType,
-      contentType: "movie",
+      contentType: "Movie",
     };
 
     addDocument("content", data).then(() => navigate(-1));
@@ -105,20 +105,20 @@ export default function AddMovie() {
             <Typography>Enter movie details below :</Typography>
             <br />
             <TextField
-              value={url}
-              label="HLS URL"
-              placeholder="Paste HLS url here"
-              onChange={(e) => setUrl(e.target.value)}
+              value={videoId}
+              label="Video ID"
+              placeholder="Paste Video ID here"
+              onChange={(e) => setVideoId(e.target.value)}
               fullWidth
               required
             />
             <br />
             <br />
             <TextField
-              value={trailer}
-              label="Trailer Youtube URL"
-              placeholder="Paste Trailer url here"
-              onChange={(e) => setTrailer(e.target.value)}
+              value={embedCode}
+              label="Trailer Embed Code"
+              placeholder="Paste Youtube Embed Code here"
+              onChange={(e) => setEmbedCode(e.target.value)}
               fullWidth
               required
             />
@@ -129,10 +129,10 @@ export default function AddMovie() {
             <Typography>Is this movie Free or Paid</Typography>
             <br />
             <FormControl fullWidth required>
-              <InputLabel>Type</InputLabel>
+              <InputLabel>Payment Type</InputLabel>
               <Select
                 value={paymentType}
-                label="Type"
+                label="Payment Type"
                 onChange={(e) => setPaymentType(e.target.value)}
               >
                 <MenuItem value="Free">Free</MenuItem>
