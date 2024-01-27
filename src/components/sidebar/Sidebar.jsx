@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import { SidebarItems } from "./SidebarItems";
-import { Home, Logout, Person, VideoCall, TagSharp } from "@mui/icons-material";
+import {
+  Home,
+  Logout,
+  Person,
+  Payment,
+  TagSharp,
+  VideoCall,
+} from "@mui/icons-material";
 import {
   Box,
   List,
@@ -54,6 +61,11 @@ export const Sidebar = ({ children }) => {
             icon={<VideoCall color="primary" />}
             text="Content"
             link="/content"
+          />
+          <SidebarItems
+            icon={<Payment color="primary" />}
+            text="Plans"
+            link="/payment-plans"
           />
           <SidebarItems
             icon={<TagSharp color="primary" />}

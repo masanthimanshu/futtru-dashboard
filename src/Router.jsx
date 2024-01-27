@@ -14,6 +14,7 @@ const Users = lazy(() => import("./pages/users/Users"));
 const NotFound = lazy(() => import("./pages/404/NotFound"));
 const Content = lazy(() => import("./pages/content/Content"));
 const AddMovie = lazy(() => import("./pages/addContent/AddMovie"));
+const PaymentPlans = lazy(() => import("./pages/plans/PaymentPlans"));
 const AddWebSeries = lazy(() => import("./pages/addContent/AddWebSeries"));
 
 export const Router = () => {
@@ -32,6 +33,7 @@ export const Router = () => {
           <Route path="home" element={<Home />} />
           <Route path="tags" element={<Tags />} />
           <Route path="users" element={<Users />} />
+          <Route path="payment-plans" element={<PaymentPlans />} />
           <Route path="content">
             <Route index element={<Content />} />
             <Route path="add-movie" element={<AddMovie />} />
