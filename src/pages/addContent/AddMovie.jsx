@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import { addDocument } from "../../firebase/cloudFirestore/setData";
 import { uploadImage } from "../../firebase/cloudStorage/UploadImage";
+import { getDocumentData } from "../../firebase/cloudFirestore/getData";
 import {
   Box,
   Grid,
@@ -19,6 +20,7 @@ export default function AddMovie() {
   const navigate = useNavigate();
   const uploadBtn = useRef(null);
 
+  const [tag, setTag] = useState([]);
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
   const [videoId, setVideoId] = useState("");
@@ -37,6 +39,7 @@ export default function AddMovie() {
     e.preventDefault();
 
     const data = {
+      tag,
       desc,
       title,
       videoId,
@@ -48,6 +51,10 @@ export default function AddMovie() {
 
     addDocument("content", data).then(() => navigate(-1));
   };
+
+  useEffect(() => {
+    getDocumentData("metadata", "tags").then((res) => setTag(res.tags));
+  }, []);
 
   return (
     <>
@@ -122,6 +129,25 @@ export default function AddMovie() {
               fullWidth
               required
             />
+            <br />
+            <br />
+            <FormControl fullWidth required>
+              <InputLabel>Movie Tag</InputLabel>
+              <Select
+                value={paymentType}
+                label="Movie Tag"
+                onChange={(e) => setPaymentType(e.target.value)}
+              >
+                {tag &&
+                  tag.map((e, index) => {
+                    return (
+                      <MenuItem key={index} value={e}>
+                        {e}
+                      </MenuItem>
+                    );
+                  })}
+              </Select>
+            </FormControl>
             <br />
             <br />
             <Divider />

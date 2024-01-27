@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 
 const Home = lazy(() => import("./pages/home/Home"));
+const Tags = lazy(() => import("./pages/tags/Tags"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Users = lazy(() => import("./pages/users/Users"));
 const NotFound = lazy(() => import("./pages/404/NotFound"));
@@ -29,6 +30,7 @@ export const Router = () => {
         </Route>
         <Route element={<CheckAuth />}>
           <Route path="home" element={<Home />} />
+          <Route path="tags" element={<Tags />} />
           <Route path="users" element={<Users />} />
           <Route path="content">
             <Route index element={<Content />} />
