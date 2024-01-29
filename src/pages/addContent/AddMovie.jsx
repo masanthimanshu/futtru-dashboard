@@ -20,9 +20,10 @@ export default function AddMovie() {
   const navigate = useNavigate();
   const uploadBtn = useRef(null);
 
-  const [tag, setTag] = useState([]);
+  const [tag, setTag] = useState("");
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
+  const [allTags, setAllTags] = useState([]);
   const [videoId, setVideoId] = useState("");
   const [embedCode, setEmbedCode] = useState("");
   const [paymentType, setPaymentType] = useState("");
@@ -53,7 +54,7 @@ export default function AddMovie() {
   };
 
   useEffect(() => {
-    getDocumentData("metadata", "tags").then((res) => setTag(res.tags));
+    getDocumentData("metadata", "tags").then((res) => setAllTags(res.tags));
   }, []);
 
   return (
@@ -134,12 +135,12 @@ export default function AddMovie() {
             <FormControl fullWidth required>
               <InputLabel>Movie Tag</InputLabel>
               <Select
-                value={paymentType}
+                value={tag}
                 label="Movie Tag"
-                onChange={(e) => setPaymentType(e.target.value)}
+                onChange={(e) => setTag(e.target.value)}
               >
-                {tag &&
-                  tag.map((e, index) => {
+                {allTags &&
+                  allTags.map((e, index) => {
                     return (
                       <MenuItem key={index} value={e}>
                         {e}
