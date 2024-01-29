@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Box, Button, Popover, Divider, Grid } from "@mui/material";
 import { getCollectionData } from "../../firebase/cloudFirestore/getData";
-import { Box, Button, Popover, Divider, Grid, Typography } from "@mui/material";
 
 export default function Content() {
   const [data, setData] = useState([]);
@@ -57,16 +57,22 @@ export default function Content() {
           </Link>
         </Box>
       </Popover>
-      <Grid container spacing={5}>
+      <br />
+      <br />
+      <Grid container spacing={2}>
         {data &&
           data.map((e, index) => {
             return (
               <Grid item md={4} key={index} sx={{ cursor: "pointer" }}>
-                <Box boxShadow={3} p={2} borderRadius={2}>
-                  <img src={e.thumbnail} alt="Thumbnail" />
-                  <br />
-                  <br />
-                  <Typography>{e.title}</Typography>
+                <Box boxShadow={2} p={1} borderRadius={1} height={300}>
+                  <img
+                    src={e.thumbnail}
+                    alt="Movie Thumbnail"
+                    style={{
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
                 </Box>
               </Grid>
             );
