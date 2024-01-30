@@ -8,11 +8,11 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 
 const Home = lazy(() => import("./pages/home/Home"));
-const Tags = lazy(() => import("./pages/tags/Tags"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Users = lazy(() => import("./pages/users/Users"));
 const NotFound = lazy(() => import("./pages/404/NotFound"));
 const Content = lazy(() => import("./pages/content/Content"));
+const Metadata = lazy(() => import("./pages/metadata/Metadata"));
 const AddMovie = lazy(() => import("./pages/addContent/AddMovie"));
 const PaymentPlans = lazy(() => import("./pages/plans/PaymentPlans"));
 const AddWebSeries = lazy(() => import("./pages/addContent/AddWebSeries"));
@@ -31,7 +31,7 @@ export const Router = () => {
         </Route>
         <Route element={<CheckAuth />}>
           <Route path="home" element={<Home />} />
-          <Route path="tags" element={<Tags />} />
+          <Route path="metadata" element={<Metadata />} />
           <Route path="users" element={<Users />} />
           <Route path="payment-plans" element={<PaymentPlans />} />
           <Route path="content">

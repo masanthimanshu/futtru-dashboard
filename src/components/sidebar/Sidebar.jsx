@@ -58,6 +58,11 @@ export const Sidebar = ({ children }) => {
             link="/users"
           />
           <SidebarItems
+            icon={<TagSharp color="primary" />}
+            text="Metadata"
+            link="/metadata"
+          />
+          <SidebarItems
             icon={<VideoCall color="primary" />}
             text="Content"
             link="/content"
@@ -66,11 +71,6 @@ export const Sidebar = ({ children }) => {
             icon={<Payment color="primary" />}
             text="Plans"
             link="/payment-plans"
-          />
-          <SidebarItems
-            icon={<TagSharp color="primary" />}
-            text="Tags"
-            link="/tags"
           />
         </List>
       </Drawer>

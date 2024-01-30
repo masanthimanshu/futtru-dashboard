@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Box, Button, Popover, Divider, Grid } from "@mui/material";
 import { getCollectionData } from "../../firebase/cloudFirestore/getData";
+import { Box, Button, Popover, Divider, Grid, TextField } from "@mui/material";
 
 export default function Content() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
   const [anchor, setAnchor] = useState(null);
 
   const open = Boolean(anchor);
@@ -25,6 +26,16 @@ export default function Content() {
         >
           + &nbsp; Add Content
         </Button>
+      </Box>
+      <Box mx={10} my={2} display="flex">
+        <TextField
+          value={search}
+          variant="standard"
+          label="Search Content"
+          placeholder="Enter Content Title Here"
+          onChange={(e) => setSearch(e.target.value)}
+          fullWidth
+        />
       </Box>
       <Popover
         id={id}
@@ -63,17 +74,19 @@ export default function Content() {
         {data &&
           data.map((e, index) => {
             return (
-              <Grid item md={4} key={index} sx={{ cursor: "pointer" }}>
-                <Box boxShadow={2} p={1} borderRadius={1} height={300}>
-                  <img
-                    src={e.thumbnail}
-                    alt="Movie Thumbnail"
-                    style={{
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </Box>
+              <Grid item md={4} key={index}>
+                <Link to="#">
+                  <Box boxShadow={3} p={1} borderRadius={1} height={250}>
+                    <img
+                      src={e.thumbnail}
+                      alt="Movie Thumbnail"
+                      style={{
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </Box>
+                </Link>
               </Grid>
             );
           })}

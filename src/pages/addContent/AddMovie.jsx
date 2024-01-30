@@ -8,6 +8,7 @@ import {
   Grid,
   Button,
   Select,
+  Switch,
   Divider,
   MenuItem,
   TextField,
@@ -20,13 +21,15 @@ export default function AddMovie() {
   const navigate = useNavigate();
   const uploadBtn = useRef(null);
 
-  const [tag, setTag] = useState("");
+  const [tag, setTag] = useState([]);
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
+  const [genre, setGenre] = useState([]);
   const [allTags, setAllTags] = useState([]);
+  const [isPaid, setIsPaid] = useState(true);
   const [videoId, setVideoId] = useState("");
+  const [allGenre, setAllGenre] = useState([]);
   const [embedCode, setEmbedCode] = useState("");
-  const [paymentType, setPaymentType] = useState("");
   const [thumbnail, setThumbnail] = useState("/upload-image.png");
 
   const imgUpload = (e) => {
@@ -43,10 +46,11 @@ export default function AddMovie() {
       tag,
       desc,
       title,
+      genre,
+      isPaid,
       videoId,
       embedCode,
       thumbnail,
-      paymentType,
       contentType: "Movie",
     };
 
@@ -55,6 +59,9 @@ export default function AddMovie() {
 
   useEffect(() => {
     getDocumentData("metadata", "tags").then((res) => setAllTags(res.tags));
+    getDocumentData("metadata", "genres").then((res) => {
+      setAllGenre(res.genres);
+    });
   }, []);
 
   return (
@@ -64,8 +71,11 @@ export default function AddMovie() {
       </Typography>
       <br />
       <Divider />
-      <br />
-      <br />
+      <Box display="flex" alignItems="center" justifyContent="flex-end" m={2}>
+        <Typography>Is this movie Paid?</Typography>
+        &nbsp; &nbsp;
+        <Switch onChange={() => setIsPaid(!isPaid)} defaultChecked />
+      </Box>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={5}>
           <Grid item md={6}>
@@ -132,12 +142,17 @@ export default function AddMovie() {
             />
             <br />
             <br />
+            <Divider />
+            <br />
+            <Typography>Select movie categorization details :</Typography>
+            <br />
             <FormControl fullWidth required>
               <InputLabel>Movie Tag</InputLabel>
               <Select
                 value={tag}
                 label="Movie Tag"
                 onChange={(e) => setTag(e.target.value)}
+                multiple
               >
                 {allTags &&
                   allTags.map((e, index) => {
@@ -151,19 +166,22 @@ export default function AddMovie() {
             </FormControl>
             <br />
             <br />
-            <Divider />
-            <br />
-            <Typography>Is this movie Free or Paid</Typography>
-            <br />
             <FormControl fullWidth required>
-              <InputLabel>Payment Type</InputLabel>
+              <InputLabel>Movie Genre</InputLabel>
               <Select
-                value={paymentType}
-                label="Payment Type"
-                onChange={(e) => setPaymentType(e.target.value)}
+                value={genre}
+                label="Movie Genre"
+                onChange={(e) => setGenre(e.target.value)}
+                multiple
               >
-                <MenuItem value="Free">Free</MenuItem>
-                <MenuItem value="Paid">Paid</MenuItem>
+                {allGenre &&
+                  allGenre.map((e, index) => {
+                    return (
+                      <MenuItem key={index} value={e}>
+                        {e}
+                      </MenuItem>
+                    );
+                  })}
               </Select>
             </FormControl>
           </Grid>

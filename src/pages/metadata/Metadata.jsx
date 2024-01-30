@@ -6,12 +6,13 @@ import {
   Box,
   Grid,
   Button,
+  Divider,
   TextField,
   IconButton,
   Typography,
 } from "@mui/material";
 
-export default function Tags() {
+export default function Metadata() {
   const [tag, setTag] = useState("");
   const [data, setData] = useState([]);
 
@@ -29,6 +30,11 @@ export default function Tags() {
 
   return (
     <>
+      <Typography textAlign="center">Tags Data</Typography>
+      <br />
+      <Divider />
+      <br />
+      <br />
       <Grid container spacing={2}>
         {data &&
           data.map((e, index) => {
@@ -81,6 +87,17 @@ export default function Tags() {
           </Grid>
         </Grid>
       </form>
+      <br />
+      <br />
+      <Divider />
+      <br />
+      <br />
+      <Typography textAlign="center">Genre Data</Typography>
+      <br />
+      <br />
+      <Divider />
+      <br />
+      <br />
     </>
   );
 }

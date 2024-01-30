@@ -1,3 +1,3 @@
 export default function PaymentPlans() {
-  return <div>PaymentPlans</div>;
+  return <div>Payment Plans</div>;
 }
