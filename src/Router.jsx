@@ -17,13 +17,15 @@ const AddMovie = lazy(() => import("./pages/addContent/AddMovie"));
 const PaymentPlans = lazy(() => import("./pages/plans/PaymentPlans"));
 const AddWebSeries = lazy(() => import("./pages/addContent/AddWebSeries"));
 
+import { FallbackScreen } from "./pages/fallback/FallbackScreen";
+
 export const Router = () => {
   useEffect(() => {
     window.onbeforeunload = () => "";
   }, []);
 
   return (
-    <Suspense>
+    <Suspense fallback={<FallbackScreen />}>
       <CssBaseline />
       <Routes>
         <Route element={<LoginKeeper />}>
